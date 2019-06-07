@@ -4,11 +4,14 @@ services:
     restart: always
     env_file:
       - ".env"
-    image: rabbitmq:3.7.15-management-alpine
+    # our image is a copy of rabbitmq:3.7.15-management-alpine
+    image: poptape/rabbit_3.7.15:v1.0
     volumes:
       - poptape_rabbitdata:/var/lib/rabbitmq
     ports:
       - "1233:15672"
+    networks:
+      - net_poptape    
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
