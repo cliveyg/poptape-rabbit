@@ -1,0 +1,19 @@
+version: '3'
+services:
+  pop:
+    restart: always
+    env_file:
+      - ".env"
+    image: rabbitmq:3.7.15-management-alpine
+    volumes:
+      - poptape_rabbitdata:/var/lib/rabbitmq
+    ports:
+      - "1233:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+networks:
+  net_poptape:
+    external: true
+volumes:
+  poptape_rabbitdata:
