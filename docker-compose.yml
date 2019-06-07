@@ -5,7 +5,7 @@ services:
     env_file:
       - ".env"
     # our image is a copy of rabbitmq:3.7.15-management-alpine
-    image: poptape/rabbit_3.7.15:v1.0
+    image: poptape/rabbitmq:v1.0
     volumes:
       - poptape_rabbitdata:/var/lib/rabbitmq
     ports:
