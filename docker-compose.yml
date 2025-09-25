@@ -1,11 +1,11 @@
 services:
   pop:
+    hostname: rabbit
     restart: always
-    #image: rabbitmq:latest
     image: rabbitmq:management
     env_file: .env
     volumes:
-      - poptape_rabbitdata:/var/lib/rabbitmq
+      - poptape_rabbit_data:/var/lib/rabbitmq
     ports:
       - "15672:15672"
     networks:
@@ -17,4 +17,5 @@ networks:
   poptape:
     external: true
 volumes:
-  poptape_rabbitdata:
+  poptape_rabbit_data:
+    name: poptape_rabbit_data
